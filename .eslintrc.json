@@ -1,0 +1,53 @@
+{
+	"root": true,
+	"ignorePatterns": ["**/*"],
+	"env": {
+		"browser": true,
+		"es6": true,
+		"node": true
+	},
+	"plugins": ["@nrwl/nx"],
+	"overrides": [
+		{
+			"files": ["*.ts"],
+			"extends": ["plugin:@nrwl/nx/typescript"],
+			"rules": {}
+		},
+		{
+			"files": ["*.js"],
+			"extends": ["plugin:@nrwl/nx/javascript"],
+			"rules": {}
+		},
+		{
+			"files": ["*.ts"],
+			"extends": ["plugin:@nrwl/nx/angular"],
+			"plugins": ["@typescript-eslint"],
+			"rules": {
+				"@typescript-eslint/member-ordering": [
+					"error",
+					{
+						"default": ["static-field", "static-method", "instance-field", "constructor", "instance-method"]
+					}
+				],
+				"@typescript-eslint/indent": [
+					"error",
+					"tab",
+					{
+						"SwitchCase": 1,
+						"CallExpression": {
+							"arguments": "first"
+						},
+						"ArrayExpression": "first",
+						"ObjectExpression": "first",
+						"FunctionDeclaration": {
+							"parameters": "first"
+						},
+						"FunctionExpression": {
+							"parameters": "first"
+						}
+					}
+				]
+			}
+		}
+	]
+}
